@@ -16,7 +16,6 @@
 	var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
 	supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
 	</script>
-	<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
 </head>
 
 <body class="loading">
@@ -113,7 +112,6 @@
 			<path class="overlay__path" vector-effect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" />
 		</svg>
 	</main>
-	<script src="https://tympanus.net/codrops/adpacks/cda.js"></script>
 	<script type="module" src="js/index.js"></script>
 </body>
 

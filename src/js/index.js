@@ -29,6 +29,7 @@ const title = {
 };
 
 let isAnimating = false;
+
 // opens the menu
 const openMenu = ()  => {
     
@@ -36,6 +37,9 @@ const openMenu = ()  => {
     isAnimating = true;
     gsap.timeline({
             onComplete: () => isAnimating = false
+        })
+        .set(overlayPath, {
+            attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' }
         })
         .to(overlayPath, { 
             duration: 0.8,

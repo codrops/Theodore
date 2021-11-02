@@ -1,8 +1,8 @@
 {
-  "name": "theodore",
+  "name": "Infinite Menu Background Animation",
   "version": "1.0.0",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "description": "",
+  "description": "A page transition with an animated SVG path for a menu that has an infinite background animation.",
   "scripts": {
     "start": "parcel src/index.html --open",
     "clean": "rm -rf dist/*",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/codrops/[NAME].git"
+    "url": "git://github.com/codrops/Theodore.git"
   },
   "keywords": [],
   "author": "Codrops",
   "license": "MIT",
   "homepage": "https://tympanus.net/codrops",
   "bugs": {
-    "url": "https://github.com/codrops/[NAME]/issues"
+    "url": "https://github.com/codrops/Theodore/issues"
   },
   "dependencies": {
     "gsap": "^3.8.0",
