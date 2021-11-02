@@ -8,6 +8,16 @@
 	font-size: 15px;
 }
 
+body #cdawrap {
+	--cda-left: auto;
+    --cda-right: 1rem;
+    --cda-width: 250px;
+    --cda-bottom: 0.5rem;
+    --cda-top: auto;
+    --cda-text-align: right;
+    --footer-align: end;
+}
+
 body {
 	margin: 0;
 	--color-text: #000;
@@ -24,9 +34,9 @@ body {
 	--color-link-hover: #000;
 	--color-link-alt-hover: #fff;
 	--color-button-menu: #000;
-	--color-button-menu-hover: #000;
+	--color-button-menu-hover: #79a18a;
 	--color-button-close: #fff;
-	--color-button-close-hover: #128b47;
+	--color-button-close-hover: #79a18a;
 	color: var(--color-text);
 	background-color: var(--color-bg);
 	font-family: meno-banner, serif;
@@ -249,10 +259,18 @@ main {
 	fill: var(--color-button-menu);
 }
 
+.button-menu svg {
+	transition: transform 0.5s ease;
+}
+
 .button-menu:focus-visible,
 .button-menu:hover {
 	fill: var(--color-button-menu-hover);
 	border-color: var(--color-button-menu-hover);
+}
+
+.button-menu:hover svg {
+	transform: scale(1.1);
 }
 
 .frame--menu-open .button-menu {

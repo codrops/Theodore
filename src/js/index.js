@@ -41,7 +41,7 @@ const openMenu = ()  => {
             duration: 0.8,
             ease: 'power4.in',
             attr: { d: 'M 0 100 V 50 Q 50 0 100 50 V 100 z' }
-        })
+        }, 0)
         .to(overlayPath, { 
             duration: 0.3,
             ease: 'power2',
