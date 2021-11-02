@@ -1,0 +1,460 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 15px;
+}
+
+body {
+	margin: 0;
+	--color-text: #000;
+	--color-text-alt: #3e4843;
+	--color-heading-main: #000;
+	--color-heading-main-alt: #fff;
+	--color-heading-sub: #374b41;
+	--color-menu: #7ec59d;
+	--color-menu-hover: #128b47;
+	--color-bg: #4f6c5e;
+	--color-bg-menu: #000;
+	--color-link: #000;
+	--color-link-alt: #3e4843;
+	--color-link-hover: #000;
+	--color-link-alt-hover: #fff;
+	--color-button-menu: #000;
+	--color-button-menu-hover: #000;
+	--color-button-close: #fff;
+	--color-button-close-hover: #128b47;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: meno-banner, serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid #fff;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.hover-line {
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+}
+
+.hover-line::before {
+	content: '';
+	height: 1px;
+	width: 100%;
+	background: currentColor;
+	position: absolute;
+	top: 92%;
+	transition: transform 0.3s;
+	transform-origin: 0% 50%;
+}
+
+.hover-line:hover::before {
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+}
+
+main {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100vh;
+}
+
+.frame {
+	grid-area: 1 / 1 / 2 / 2;
+	z-index: 100;
+	display: grid;
+	align-content: space-between;
+	align-items: center;
+	height: 100vh;
+	padding: 1rem 1rem 0.5rem 1rem;
+	pointer-events: none;
+	font-size: 1rem;
+	grid-template-columns: repeat(4,25%);
+	grid-template-rows: auto auto 1fr auto;
+	grid-template-areas: 'author heading heading button'
+						'... ... ... ...'
+						'links links links links'
+						'title title title title';	
+}
+
+.frame--menu-open {
+	color: var(--color-text-alt);
+	--color-link: var(--color-link-alt);
+	--color-link-hover: (--color-link-hover-alt);
+	--color-heading-main: var(--color-heading-main-alt);
+}
+
+.frame__title {
+	grid-area: title;
+	font-size: inherit;
+	font-weight: normal;
+	margin: 0.5rem 0 0;
+	justify-self: center;
+}
+
+.frame__links {
+	grid-area: links;
+	display: flex;
+	flex-wrap: wrap;
+	justify-self: center;
+	align-self: end;
+}
+
+.frame__links a {
+	margin: 0 0.5rem;
+}
+
+.frame__author {
+	margin: 0;
+	grid-area: author;
+}
+
+.frame__button {
+	justify-self: end;
+	grid-area: button;
+}
+
+.frame--menu-open .frame__author {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.frame__heading {
+	grid-area: heading;
+	text-align: center;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	white-space: nowrap;
+	justify-self: center;
+}
+
+.frame__heading-main {
+	line-height: 0.8;
+	display: block;
+	font-size: 1.5rem;
+	color: var(--color-heading-main);
+}
+
+.frame__heading-sub {
+	font-size: 0.75rem;
+	line-height: 1;
+	color: var(--color-heading-sub);
+}
+
+.frame--menu-open .frame__heading-sub {
+	pointer-events: none;
+	opacity: 0;
+}
+
+.frame a,
+.frame button {
+	pointer-events: auto;
+}
+
+.button-menu {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	display: inline-grid;
+	place-items: center;
+	border: 1px solid var(--color-button-menu);
+	fill: var(--color-button-menu);
+}
+
+.button-menu:focus-visible,
+.button-menu:hover {
+	fill: var(--color-button-menu-hover);
+	border-color: var(--color-button-menu-hover);
+}
+
+.frame--menu-open .button-menu {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.content {
+	grid-area: 1 / 1 / 2 / 2;
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	position: relative;
+	align-items: center;
+	height: 100vh;
+	justify-content: center;
+}
+
+.content__title {
+	font-weight: 400;
+	text-align: center;
+	font-size: 7.5vw;
+	line-height: 0.75;
+	cursor: default;
+	margin: 10vh 0 0 0;
+}
+
+.content__title-main {
+	font-size: 23vw;
+    display: block;
+    will-change: opacity, transform;
+}
+
+.content__title-sub {
+	display: block;
+	will-change: opacity, transform;
+}
+
+.button-enter {
+	margin-top: 4vh;
+	cursor: not-allowed;
+	transition: transform 0.5s ease;
+}
+
+.button-enter:hover {
+    transform: translateX(15px) rotate(-40deg);
+}
+
+.menu-wrap {
+	grid-area: 1 / 1 / 2 / 2;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100vh;
+	position: relative;
+	background: var(--color-bg-menu);
+	pointer-events: none;
+	opacity: 0;
+}
+
+.menu-wrap.menu-wrap--open {
+	pointer-events: auto;
+	opacity: 1;
+}
+
+.overlay {
+	grid-area: 1 / 1 / 2 / 2;
+	position: relative;
+	z-index: 1000;
+	pointer-events: none;
+}
+
+.menu {
+	grid-area: 1 / 1 / 2 / 2;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.menu__item {
+	font-size: 9vw;
+	color: #fff;
+	cursor: pointer;
+	line-height: 1;
+	font-weight: 300;
+    text-align: right;
+    position: relative;
+    will-change: opacity, transform;
+}
+
+.menu__item:hover .menu__item-tiny {
+	color: #fff;
+}
+
+.menu__item-tiny {
+	font-size: 1rem;
+}
+
+.menu__item:nth-child(odd) {
+	margin-left: -10vw;
+}
+
+.menu__item-text {
+	color: var(--color-menu);
+}
+
+.menu__item:hover .menu__item-text {
+	color: var(--color-menu-hover);
+}
+
+.tiles {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 150vh;
+	display: flex;
+	opacity: 0.5;
+	flex-direction: column;
+	justify-content: center;
+	transform: translate3d(-50%,-50%, 0) rotate(22.5deg);
+}
+
+.tiles__line {
+	display: flex;
+	transform: translateX(25%);
+	animation: runner 10s linear infinite;
+}
+
+.tiles__line:nth-child(2) {
+	animation-duration: 16s;
+}
+
+.tiles__line:nth-child(3) {
+	animation-duration: 22s;
+}
+
+@keyframes runner {
+	to {
+		transform: translateX(-25%);
+	}
+}
+
+.tiles__line-img {
+	--tile-margin: 3vw;
+	flex: none;
+	width: 30vh;
+	height: 30vh;
+	margin: var(--tile-margin);
+	background-size: cover;
+	background-position: 50% 50%;
+	border-radius: 50%;
+}
+
+.tiles__line-img--large {
+	width: 100vh;
+	border-radius: 20vh;
+}
+
+.button-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 2rem;
+	stroke: var(--color-button-close);
+	fill: none;
+}
+
+.button-close:focus-visible,
+.button-close:hover {
+	stroke: var(--color-button-close-hover);
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		grid-template-columns: 390px 1fr 390px;
+		grid-template-areas: 'author heading button'
+							'... ... ...'
+							'title links links';	
+		font-size: 1.5rem;
+	}
+	.frame__title {
+		justify-self: start;
+		align-self: end;
+		margin: 0 3rem 0 0;
+	}
+	.frame__links {
+		display: flex;
+		justify-self: start;
+		padding: 0;
+	}
+	.frame__links a:not(:last-child) {
+		margin-right: 0.5rem;
+	}
+	.frame__heading-main {
+		font-size: 2.15rem;
+	}
+	.frame__heading-sub {
+		font-size: 1rem;
+	}
+	.menu__item-tiny {
+		font-size: 2rem;
+	}
+}
