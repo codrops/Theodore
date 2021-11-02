@@ -2,7 +2,7 @@
 
 A page transition with an animated SVG path for a menu that has an infinite background animation.
 
-![Image Title](https://generative-placeholders.glitch.me/image?width=800&height=600")
+![Image Title](https://tympanus.net/codrops/wp-content/uploads/2021/11/Theodore_feat.jpg)
 
 [Article on Codrops](https://tympanus.net/codrops/?p=57286)
 
